@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/ykliek/Desktop/FdF/Get_Next_Line/get_next_line.h
+fcntl.h
+-
+sys/stat.h
+-
+sys/types.h
+-
+unistd.h
+-
+
+/Users/ykliek/Desktop/FdF/fdf.h
+stdlib.h
+-
+stdio.h
+-
+libft/libft.h
+/Users/ykliek/Desktop/FdF/libft/libft.h
+Get_Next_Line/get_next_line.h
+/Users/ykliek/Desktop/FdF/Get_Next_Line/get_next_line.h
+
+/Users/ykliek/Desktop/FdF/libft/libft.h
+unistd.h
+-
+stdlib.h
+-
+
+/Users/ykliek/Desktop/FdF/parse_map.c
+fdf.h
+/Users/ykliek/Desktop/FdF/fdf.h
+
