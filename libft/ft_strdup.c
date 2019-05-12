@@ -18,23 +18,19 @@ char	*ft_strdup(const char *s1)
 	char	*str;
 
 	count = 0;
-	if (s1)
+	while (s1[count] != '\0')
+		count++;
+	str = (char*)malloc(count + 1);
+	if (!str)
+		return (NULL);
+	if (s1 == NULL)
+		return (NULL);
+	count -= count;
+	while (s1[count] != '\0')
 	{
-		while (s1[count] != '\0')
-			count++;
-		str = (char *)malloc(count + 1);
-		if (!str)
-			return (NULL);
-		if (s1 == NULL)
-			return (NULL);
-		count -= count;
-		while (s1[count] != '\0')
-		{
-			str[count] = s1[count];
-			count++;
-		}
-		str[count] = '\0';
-		return (&str[0]);
+		str[count] = s1[count];
+		count++;
 	}
-	return (NULL);
+	str[count] = '\0';
+	return (&str[0]);
 }

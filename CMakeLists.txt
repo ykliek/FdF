@@ -3,21 +3,27 @@ project(FdF C)
 
 set(CMAKE_C_STANDARD 11)
 
-include_directories(.)
-include_directories(Get_Next_Line)
+include_directories(includes)
 include_directories(libft)
+include_directories(src)
 
 add_executable(FdF
-        Get_Next_Line/get_next_line.c
-        Get_Next_Line/get_next_line.h
+        includes/fdf.h
+        includes/mlx.h
+        includes/mlx_int.h
+        includes/mlx_new_window.h
+        libft/colors.c
+        libft/free_mem.c
         libft/ft_atoi.c
         libft/ft_bzero.c
+        libft/ft_ftoa.c
         libft/ft_isalnum.c
         libft/ft_isalpha.c
         libft/ft_isascii.c
         libft/ft_isdigit.c
         libft/ft_isprint.c
         libft/ft_itoa.c
+        libft/ft_itoa_base.c
         libft/ft_lstadd.c
         libft/ft_lstdel.c
         libft/ft_lstdelone.c
@@ -32,6 +38,7 @@ add_executable(FdF
         libft/ft_memdel.c
         libft/ft_memmove.c
         libft/ft_memset.c
+        libft/ft_printf.c
         libft/ft_putchar.c
         libft/ft_putchar_fd.c
         libft/ft_putendl.c
@@ -68,8 +75,14 @@ add_executable(FdF
         libft/ft_strtrim.c
         libft/ft_tolower.c
         libft/ft_toupper.c
+        libft/get_next_line.c
         libft/libft.h
-        fdf.c
-        fdf.h
-        main.c
-        parse_map.c)
+        libft/modifiers.c
+        libft/parser.c
+        libft/precision.c
+        libft/weigth_n_flags.c
+        src/fdf.c
+        src/lst_tools.c
+        src/main.c
+        src/parse_map.c
+        src/ft_atoi_base.c)

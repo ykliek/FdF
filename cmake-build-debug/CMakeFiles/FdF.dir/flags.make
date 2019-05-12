@@ -6,5 +6,5 @@ C_FLAGS = -g   -std=gnu11
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/ykliek/Desktop/FdF/. -I/Users/ykliek/Desktop/FdF/Get_Next_Line -I/Users/ykliek/Desktop/FdF/libft 
+C_INCLUDES = -I/Users/ykliek/Desktop/FdF/includes -I/Users/ykliek/Desktop/FdF/libft -I/Users/ykliek/Desktop/FdF/src 
 

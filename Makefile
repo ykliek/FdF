@@ -10,5 +10,61 @@
 #                                                                              #
 # **************************************************************************** #
 
-all:
-	gcc main.c -lmlx -framework OpenGL -framework AppKit 
+NAME = fdf
+
+FLAGS = -Wall -Werror -Wextra
+
+FRAMEWORKS = -framework OpenGL -framework AppKit
+
+LIB = libft/libft.a
+
+MLX = minilibx_macos/libmlx.a
+
+SRCS = src/main.c \
+		src/fdf.c \
+		src/lst_tools.c \
+		src/parse_map.c \
+		src/ft_atoi_base.c
+
+INCLUDE = ./includes/fdf.h
+
+all: $(NAME)
+
+$(NAME):
+	@make -C libft
+	@make -C minilibx_macos
+	gcc $(FLAGS) $(FRAMEWORKS) $(SRCS) $(MLX) $(LIB) -I $(INCLUDE) -o $(NAME) 
+
+clean:
+	@rm -rf $(OBJ)
+	@make -C libft clean 
+	@make -C minilibx_macos clean
+	@rm -f fdf.h.gch
+
+fclean: clean
+	@rm -f $(NAME)
+	@make -C minilibx_macos fclean
+	@make -C libft fclean
+
+re: fclean all
+
+cleanlib:
+	make -C libft clean
+
+fcleanlib:
+	make -C libft fclean
+
+relib:
+	make -C libft re
+
+cleanmlx:
+	make -C minilibx_macos clean
+
+fcleanmlx:
+	make -C minilibx_macos clean
+
+remlx:
+	make -C minilibx_macos re
+
+noflags:
+	gcc $(FRAMEWORKS) $(SRCS) $(MLX) $(LIB) -I $(INCLUDE) -o $(NAME) 

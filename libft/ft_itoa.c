@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int		nagative(long long int n)
+static int		nagative(int n)
 {
 	int		count;
 
@@ -23,11 +23,11 @@ static int		nagative(long long int n)
 	return (count);
 }
 
-char			*ft_itoa(long long n)
+char			*ft_itoa(int n)
 {
-	char				*str;
-	int					count;
-	long long int		tmp;
+	char	*str;
+	int		count;
+	int		tmp;
 
 	tmp = n;
 	count = nagative(n);

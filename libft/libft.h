@@ -15,6 +15,31 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <fcntl.h>
+# include <sys/stat.h>
+# include <sys/types.h>
+# include <string.h>
+# include <stdarg.h>
+
+# define BUFF_SIZE 1
+# define DIFF(x, y) ((x > y) ? x - y : 0)
+# define TEG(str, end) ((str[end] == 'x') ? "0x" : "0X")
+# define CHECKM(a) ((a < 0) ? 4294967296 : 0)
+# define RED "\x1b[31m"
+# define GREEN "\x1b[32m"
+# define YELLOW "\x1b[33m"
+# define BLUE "\x1b[34m"
+# define MAGENTA "\x1b[35m"
+# define CYAN "\x1b[36m"
+# define WHITE "\x1b[37m"
+# define B_RED "\x1b[31;1m"
+# define B_GREEN "\x1b[32;1m"
+# define B_YELLOW "\x1b[33;1m"
+# define B_BLUE "\x1b[34;1m"
+# define B_MAGENTA "\x1b[35;1m"
+# define B_CYAN "\x1b[36;1m"
+# define B_WHITE "\x1b[37;1m"
+# define EOC "\x1b[0m"
 
 typedef struct	s_list
 {
@@ -22,6 +47,19 @@ typedef struct	s_list
 	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
+
+typedef struct	s_ret_value
+{
+	int			a;
+	int			b;
+}				t_ret_value;
+
+typedef struct	s_num
+{
+	int			a;
+	int			b;
+	int			c;
+}				t_num;
 
 int				ft_atoi(const char *str);
 
@@ -37,7 +75,7 @@ int				ft_isdigit(int c);
 
 int				ft_isprint(int c);
 
-char			*ft_itoa(long long n);
+char			*ft_itoa(int n);
 
 void			*ft_memalloc(size_t size);
 
@@ -138,5 +176,49 @@ void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 t_list			*ft_lstnew(void const *content, size_t content_size);
+
+int				get_next_line(const int fd, char **line);
+
+int				get_every_line(int fd, int tmp, char **str, char **line);
+
+char			*add_newline(char *s, int len);
+
+int				ft_printf(const char *format, ...);
+
+char			*parse_char(char c);
+
+char			*address(long long int a);
+
+char			*ft_itoa_base(long long int value, int base, char type);
+
+char			*str_toupper(char *str);
+
+char			*precision(int	start, int end, char *str, char *str2);
+
+char			*prec_dioux(int num, char *str, char c, t_num count1);
+
+char			*find_type(char type, va_list argptr, int tol);
+
+int				precision_f(int	start, int end, char *str);
+
+char			*ft_ftoa(long double n, int tol, int count);
+
+char			*modifiers(int start, int end, char *str, va_list argptr);
+
+char			*make_weigth(char *str, int start, int end, char *res);
+
+int				str_s(char *str, int start, int end, char c);
+
+char			*str_join_n(char *s1, char *s2);
+
+void			replace(char **str, char *add, int i);
+
+void			rreplace(char *str, char **add, int i);
+
+int				mem(int a, char **str);
+
+char			*colors(char *color);
+
+char			*ft_utoa(unsigned long long n);
 
 #endif

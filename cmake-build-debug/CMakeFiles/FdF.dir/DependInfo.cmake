@@ -4,16 +4,18 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/ykliek/Desktop/FdF/Get_Next_Line/get_next_line.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/Get_Next_Line/get_next_line.c.o"
-  "/Users/ykliek/Desktop/FdF/fdf.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/fdf.c.o"
+  "/Users/ykliek/Desktop/FdF/libft/colors.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/colors.c.o"
+  "/Users/ykliek/Desktop/FdF/libft/free_mem.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/free_mem.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_atoi.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_atoi.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_bzero.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_bzero.c.o"
+  "/Users/ykliek/Desktop/FdF/libft/ft_ftoa.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_ftoa.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_isalnum.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_isalnum.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_isalpha.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_isalpha.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_isascii.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_isascii.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_isdigit.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_isdigit.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_isprint.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_isprint.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_itoa.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_itoa.c.o"
+  "/Users/ykliek/Desktop/FdF/libft/ft_itoa_base.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_itoa_base.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_lstadd.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_lstadd.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_lstdel.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_lstdel.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_lstdelone.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_lstdelone.c.o"
@@ -28,6 +30,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/ykliek/Desktop/FdF/libft/ft_memdel.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_memdel.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_memmove.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_memmove.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_memset.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_memset.c.o"
+  "/Users/ykliek/Desktop/FdF/libft/ft_printf.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_printf.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_putchar.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_putchar.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_putchar_fd.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_putchar_fd.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_putendl.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_putendl.c.o"
@@ -64,16 +67,24 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/ykliek/Desktop/FdF/libft/ft_strtrim.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_strtrim.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_tolower.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_tolower.c.o"
   "/Users/ykliek/Desktop/FdF/libft/ft_toupper.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/ft_toupper.c.o"
-  "/Users/ykliek/Desktop/FdF/main.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/main.c.o"
-  "/Users/ykliek/Desktop/FdF/parse_map.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/parse_map.c.o"
+  "/Users/ykliek/Desktop/FdF/libft/get_next_line.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/get_next_line.c.o"
+  "/Users/ykliek/Desktop/FdF/libft/modifiers.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/modifiers.c.o"
+  "/Users/ykliek/Desktop/FdF/libft/parser.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/parser.c.o"
+  "/Users/ykliek/Desktop/FdF/libft/precision.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/precision.c.o"
+  "/Users/ykliek/Desktop/FdF/libft/weigth_n_flags.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/libft/weigth_n_flags.c.o"
+  "/Users/ykliek/Desktop/FdF/src/fdf.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/src/fdf.c.o"
+  "/Users/ykliek/Desktop/FdF/src/ft_atoi_base.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/src/ft_atoi_base.c.o"
+  "/Users/ykliek/Desktop/FdF/src/lst_tools.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/src/lst_tools.c.o"
+  "/Users/ykliek/Desktop/FdF/src/main.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/src/main.c.o"
+  "/Users/ykliek/Desktop/FdF/src/parse_map.c" "/Users/ykliek/Desktop/FdF/cmake-build-debug/CMakeFiles/FdF.dir/src/parse_map.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "../."
-  "../Get_Next_Line"
+  "../includes"
   "../libft"
+  "../src"
   )
 
 # Targets to which this target links.
