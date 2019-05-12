@@ -90,7 +90,7 @@ int		main(int argc, char **argv)
 			if (j == map->content.x && i == map->content.y)
 			{
 				*(int *)(i_ptr + ((i + j * WIDTH) * bpp)) = map->content.color;
-				ft_printf("I: %d X: %d J: %d Y: %d \n", i, map->content.y, j, map->content.x);
+				// ft_printf("I: %d X: %d J: %d Y: %d \n", i, map->content.y, j, map->content.x);
 				map = map->next;
 			}
 			// ft_printf("I: %d X: %d J: %d Y: %d \n", i, map->content.x, j, map->content.y);
