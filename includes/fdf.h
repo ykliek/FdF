@@ -26,7 +26,7 @@
 typedef	struct 	s_value
 {
 	int			height;
-	int			color;
+	float			color;
 	int			x;
 	int			y;
 }				t_value;

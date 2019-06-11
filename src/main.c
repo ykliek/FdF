@@ -57,61 +57,64 @@ void	find_dots(char *i_ptr, int i, int j, t_map *map, int h, int w, int bpp, t_m
 	int new_j;
 	int tmp_i;
 	int tmp_j;
-	int count;
-	count = 0;
+	double new_height_1;
+	double new_height_2;
+	double add;
+	double cur_h;
+	int new_col;
+	int col;
+	float count;
 	t_value content[2];
+	t_map  *end;
 
+	count = 0;
 	tmp_j = j;
 	tmp_i = i;
-	new_i = i - 50;
-	new_j = j - 50;
-	// int s = j + (new_j - j) / 2;
-	// int d = i + (new_i - i) / 2;
+	new_i = i + 50;
+	new_j = j + 50;
+	end = getLast(map);
 	content[0] = curr_dot(begin_list, new_i, j);
 	content[1] = curr_dot(begin_list, i, new_j);
-	if (j > 0)
-		while (j > new_j + map->content.height)
+	new_height_2 = content[1].height;
+	new_height_1 = content[0].height;
+	add = map->content.height;
+	cur_h = map->content.height;
+	new_col = map->content.color;
+	col = map->content.color;
+	if (j < end->content.y)
+	{
+		while (j <= new_j)
 		{
-			if (content[1].color != map->content.color)
-			{
-				// if (j < s)
-				// 	*(int *)(i_ptr + ((j + i * WIDTH) * bpp)) = map->content.color;
-				// else
-					// *(int *)(i_ptr + ((j + i * WIDTH) * bpp)) = content[1].color;
-					*(int *)(i_ptr + ((j + i * WIDTH) * bpp)) = ft_atoi_base("0xFFFFFF", 16);
-			}
-			else
-				*(int *)(i_ptr + (((j + map->content.height)  + (i + map->content.height) * WIDTH) * bpp)) = map->content.color;
-			j--;
-			if (map->content.height > 0)
-				i--;
+			col = (int)(map->content.color * (1 - count / 50) + (count / 50) * content[1].color);
+			*(int *)(i_ptr + (((j + (int)add)  + (i + (int)add) * WIDTH) * bpp)) = col;
+			if (add > new_height_2)
+				add -= cur_h / 50;
+			if (add < new_height_2)
+				add += new_height_2 / 50;
+			count++;
+			j++;
 		}
+	}
 	j = tmp_j;
-	i = tmp_i;
-	if (i > 0)
-		while (i > new_i + map->content.height)
+	count = 0;
+	add = map->content.height;
+	cur_h = map->content.height;
+	map->content.color = new_col;
+	col = new_col;
+	if (i < end->content.x)
+	{
+		while (i <= new_i)
 		{
-			if (content[0].color != map->content.color)
-			{
-				// if (i < d)
-				// 	*(int *)(i_ptr + ((j + i * WIDTH) * bpp)) = map->content.color;
-				// else
-					// *(int *)(i_ptr + ((j + i * WIDTH) * bpp)) = content[0].color;
-					*(int *)(i_ptr + ((j + i * WIDTH) * bpp)) = ft_atoi_base("0xFFFFFF", 16);
-			}
-			else
-				*(int *)(i_ptr + (((j + map->content.height)  + (i + map->content.height) * WIDTH) * bpp)) = map->content.color;
-			i--;
-			if (map->content.height > 0)
-				j--;
+			col = (int)(map->content.color * (1 - count / 50) + (count / 50) * content[0].color);
+			*(int *)(i_ptr + (((j + (int)add)  + (i + (int)add) * WIDTH) * bpp)) = col;
+			if (add > new_height_1)
+				add -= cur_h / 50;
+			if (add < new_height_1)
+				add += new_height_1 / 50;
+			count++;
+			i++;
 		}
-	// while (count < map->content.height)
-	// {
-	// 	*(int *)(i_ptr + ((j  + i * WIDTH) * bpp)) = map->content.color;
-	// 	i++;
-	// 	j++;
-	// 	count++;
-	// }
+	}
 }
 
 int		main(int argc, char **argv)
