@@ -26,7 +26,7 @@
 typedef	struct 	s_value
 {
 	int			height;
-	float			color;
+	double			color;
 	int			x;
 	int			y;
 }				t_value;
@@ -36,6 +36,34 @@ typedef	struct 		s_map
 	t_value			content;
 	struct s_map	*next;
 }					t_map;
+
+typedef struct 		s_params
+{
+	int				x;
+	int				y;
+	int				scale;
+	int				bpp;
+}					t_params;
+
+typedef struct 		s_mlx
+{
+	void	*mlx;
+	void	*mlx_wnd;
+	void	*img;
+	int 	bpp;
+	int 	sz;
+	int 	endian;
+	char	*i_ptr;
+}					t_mlx;
+
+typedef struct 		s_draw
+{
+	double			add;
+	double			cur_h;
+	double			count;
+	double			col;
+	double			new_height;
+}					t_draw;
 
 t_map				*read_map(char *line, int j);
 
@@ -50,5 +78,9 @@ void				pushBack(t_map	*head,	t_value	data);
 t_map				*getLast(t_map	*head);
 
 int					ft_atoi_base(char	*str, int	base);
+
+void				image(char *i_ptr, t_map *map, int bpp);
+
+t_map				*write_map(int fd);
 
 # endif
