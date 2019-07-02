@@ -14,14 +14,15 @@
 # define FDF_H
 
 
-# include <mlx.h>
+# include "mlx.h"
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
 # include "libft.h"
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1280
+# define HEIGHT 800
+# define SCALE 25
 
 typedef	struct 	s_value
 {
@@ -41,7 +42,6 @@ typedef struct 		s_params
 {
 	int				x;
 	int				y;
-	int				scale;
 	int				bpp;
 }					t_params;
 

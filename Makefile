@@ -20,7 +20,7 @@ LIB = libft/libft.a
 
 MLX = minilibx_macos/libmlx.a
 
-SRCS = src/main.c \
+SRCS = src/new_main.c \
 		src/fdf.c \
 		src/lst_tools.c \
 		src/parse_map.c \

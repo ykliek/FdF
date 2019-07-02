@@ -29,8 +29,8 @@ t_map	*read_map(char *line, int j)
 			data.color = ft_atoi_base(ft_strchr(str[i], ',') + 1, 16);
 		else
 			data.color = ft_atoi_base("0xFFFFFF", 16);
-		data.x = j * 50;
-		data.y = i * 50;
+		data.x = j * SCALE;
+		data.y = i * SCALE;
 		if (j == 0 || !map)
 			push(&map, data);
 		else
