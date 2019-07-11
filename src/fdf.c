@@ -52,11 +52,11 @@ void		put_pixel(t_mlx *fdf, t_params val, t_draw values)
 	t_params tmp;
 
 	tmp = val;
-	iso(&tmp.y, &tmp.x, (int)values.add);
+	(fdf->izo_mod == 0) ? : iso(&tmp.y, &tmp.x, (int)values.add);
 	tmp.y += fdf->cam->start_y;
 	tmp.x += fdf->cam->start_x;
 	if (tmp.y >= 0 && tmp.y < WIDTH && tmp.x >= 0 && tmp.x < HEIGHT)
-		*(int *)(fdf->i_ptr + (((tmp.y + (int)values.add) + tmp.x * WIDTH) * tmp.bpp)) = values.col;
+		*(int *)(fdf->i_ptr + ((tmp.y + (tmp.x  + (int)values.add) * WIDTH) * tmp.bpp)) = values.col;
 }
 
 int		calc_color(int color1, int color2, double par, int len)
@@ -68,8 +68,7 @@ int		calc_color(int color1, int color2, double par, int len)
 	c1 = parse_color(color2);
 	double percent = par / len;
 
-	c.r = (
-		int)(c1.r * (1 - percent) + c2.r * percent);
+	c.r = (int)(c1.r * (1 - percent) + c2.r * percent);
 	c.g = (int)(c1.g * (1 - percent) + c2.g * percent);
 	c.b = (int)(c1.b * (1 - percent) + c2.b * percent);
 	c.color = (c.r << 16) + (c.g << 8) + c.b;
@@ -89,22 +88,26 @@ void		draw_y(t_mlx *fdf, t_params val, t_map *map, t_map *head)
 	data = curr_dot(head, val.x, new.y);
 	values = get_double(map, data);
 	new.x = new.y - val.y;
-	if (values.cur_h > values.new_height)
-	{
-		new.x += values.cur_h;
-		new.y += values.cur_h;
-	}
-	if (values.cur_h < values.new_height)
-	{
-		new.x += values.new_height;
-		new.y += values.new_height;
-	}
+	// if (values.cur_h > values.new_height)
+	// {
+	// 	new.x += values.cur_h;
+	// 	new.y += values.cur_h;
+	// }
+	// if (values.cur_h < values.new_height)
+	// {
+	// 	new.x += values.new_height;
+	// 	new.y += values.new_height;
+	// }
 	if (val.y < end->content.y)
 		while (val.y <= new.y)
 		{
 			values.col = calc_color(data.color, map->content.color, values.count, new.x);
 			values.add = 0;
 			put_pixel(fdf, val, values);
+			if (values.add > values.new_height)
+				values.add -= values.cur_h / new.x;
+			if (values.add < values.new_height)
+				values.add += values.new_height / new.x;
 			values.count++;
 			val.y++;
 		}

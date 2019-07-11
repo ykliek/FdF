@@ -33,6 +33,13 @@ int		key_press(int keycode, t_mlx *fdf)
 		move(fdf, keycode);
 		image(fdf);
 	}
+	if (keycode == 12)
+	{
+		fdf->izo_mod = (fdf->izo_mod == 0) ? 1 : 0;
+		fdf->cam->start_x = 100;
+		fdf->cam->start_y = 100;
+		image(fdf);
+	}
 	// else
 		// printf("%d\n", keycode);
 	return (0);
@@ -46,7 +53,6 @@ int		main(int argc, char **argv)
 	t_map	*end;
 
 	fd = open(argv[1], O_RDONLY);
-	// map = write_map(fd);
 	end = getLast(map);
 	fdf.mlx = mlx_init();
 	fdf.mlx_wnd = mlx_new_window(fdf.mlx, WIDTH, HEIGHT, "FdF");

@@ -66,6 +66,7 @@ typedef struct 		s_mlx
 	void	*img;
 	t_cam	*cam;
 	t_map	*map;
+	int		izo_mod;
 	int 	bpp;
 	int 	sz;
 	int 	endian;
