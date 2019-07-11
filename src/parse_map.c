@@ -12,6 +12,8 @@
 
 #include "fdf.h"
 
+
+
 t_map	*read_map(char *line, int j)
 {
 	t_map	*map;
@@ -31,6 +33,7 @@ t_map	*read_map(char *line, int j)
 			data.color = ft_atoi_base("0xFFFFFF", 16);
 		data.x = j * SCALE;
 		data.y = i * SCALE;
+		// data = make_izo(data);
 		if (j == 0 || !map)
 			push(&map, data);
 		else

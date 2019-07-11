@@ -21,7 +21,7 @@ int		key_press(int keycode, void *mlx)
 
 int		main(int argc, char **argv)
 {
-	int 	fd;
+	int		fd;
 	t_mlx	fdf;
 	t_map	*map;
 	t_map	*end;
@@ -38,6 +38,5 @@ int		main(int argc, char **argv)
 	mlx_put_image_to_window(fdf.mlx, fdf.mlx_wnd, fdf.img, WIDTH / 2 - end->content.x, HEIGHT / 2 - end->content.y / 2);
 	mlx_hook(fdf.mlx_wnd, 2, 0, key_press, fdf.mlx);
 	mlx_loop(fdf.mlx);
-	printf("%s\n", "test");
 	return (0);
 }

@@ -13,7 +13,6 @@
 #ifndef	FDF_H
 # define FDF_H
 
-
 # include "mlx.h"
 # include <stdlib.h>
 # include <stdio.h>
@@ -82,5 +81,9 @@ int					ft_atoi_base(char	*str, int	base);
 void				image(char *i_ptr, t_map *map, int bpp);
 
 t_map				*write_map(int fd);
+
+int					find_under(t_map *map, int y);
+
+t_value				make_izo(t_value izo);
 
 # endif

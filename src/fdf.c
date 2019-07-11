@@ -12,6 +12,18 @@
 
 #include "fdf.h"
 
+t_value	make_izo(t_value izo)
+{
+	int		x_before;
+	int		y_before;
+
+	x_before = izo.x;
+	y_before = izo.y;
+	izo.y = (y_before - x_before) * cos(0.523599);
+	izo.x = -izo.height + (y_before - x_before) * sin(0.523599);
+	return (izo);
+}
+
 t_value 		curr_dot(t_map *begin_list, int x, int y)
 {
 	t_value		content;
@@ -44,22 +56,23 @@ void		draw_y(char	*i_ptr, t_params val, t_map *map, t_map *head)
 	t_map		*end;
 
 	values.count = 0;
-	new.x = val.x + SCALE;
-	new.y = val.y + SCALE;
+	// new.x = map->next->content.x;
+	new.y = map->next->content.y;
 	end = getLast(map);
 	data = curr_dot(head, val.x, new.y);
 	values = get_double(map, data);
+	new.x = new.y - val.y;
 	if (val.y < end->content.y)
 		while (val.y <= new.y)
 		{
-			values.col = (int)(map->content.color * (1 - values.count / SCALE) 
-				+ (values.count / SCALE) * data.color);
+			values.col = (int)(map->content.color * (1 - values.count / new.x) 
+				+ (values.count / new.x) * data.color);
 			*(int *)(i_ptr + (((val.y + (int)values.add)
 			 + val.x * WIDTH) * val.bpp)) = values.col;
 			if (values.add > values.new_height)
-				values.add -= values.cur_h / SCALE;
+				values.add -= values.cur_h / new.x;
 			if (values.add < values.new_height)
-				values.add += values.new_height / SCALE;
+				values.add += values.new_height / new.x;
 			values.count++;
 			val.y++;
 		}
@@ -73,22 +86,24 @@ void		draw_x(char	*i_ptr, t_params val, t_map *map, t_map *head)
 	t_map		*end;
 
 	values.count = 0;
-	new.x = val.x + SCALE;
-	new.y = val.y + SCALE;
+	new.x = find_under(map, val.y);
+	// new.x = val.x + SCALE;
+	// new.y = map->next->content.y;
 	end = getLast(map);
 	data = curr_dot(head, new.x, val.y);
 	values = get_double(map, data);
+	new.y = new.x - val.x; // length between two points
 	if (val.x < end->content.x)
 		while (val.x <= new.x)
 		{
-			values.col = (int)(map->content.color * (1 - values.count / SCALE) 
-				+ (values.count / SCALE) * data.color);
+			values.col = (int)(map->content.color * (1 - values.count / new.y)
+				+ (values.count / new.y) * data.color);
 			*(int *)(i_ptr + (((val.y + (int)values.add)
 			 + val.x * WIDTH) * val.bpp)) = values.col;
 			if (values.add > values.new_height)
-				values.add -= values.cur_h / SCALE;
+				values.add -= values.cur_h / new.y;
 			if (values.add < values.new_height)
-				values.add += values.new_height / SCALE;
+				values.add += values.new_height / new.y;
 			values.count++;
 			val.x++;
 		}
@@ -118,18 +133,15 @@ void		image(char *i_ptr, t_map *map, int bpp)
 
 	head = map;
 	last_xy = getLast(map);
-	val.x = 0;
+	val.x = map->content.x;
+	val.y = map->content.y;
 	val.bpp = bpp;
-	while (val.x <= last_xy->content.x)
+	while (map->next)
 	{
-		val.y = 0;
-		while (val.y <= last_xy->content.y)
-		{
-			draw_y(i_ptr, val, map, head);
-			draw_x(i_ptr, val, map, head);
-			map = map->next;
-			val.y += SCALE;
-		}
-		val.x += SCALE;
-	}	
+		draw_y(i_ptr, val, map, head);
+		draw_x(i_ptr, val, map, head);
+		map = map->next;
+		val.y = map->content.y;
+		val.x = map->content.x;
+	}
 }
