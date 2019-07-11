@@ -21,12 +21,20 @@
 
 # define WIDTH 1280
 # define HEIGHT 800
-# define SCALE 25
+# define SCALE 35
+
+typedef struct	s_color
+{
+	int r;
+	int g;
+	int b;
+	int color;
+}				t_color;
 
 typedef	struct 	s_value
 {
 	int			height;
-	double			color;
+	int			color;
 	int			x;
 	int			y;
 }				t_value;
@@ -41,14 +49,23 @@ typedef struct 		s_params
 {
 	int				x;
 	int				y;
+	int				z;
 	int				bpp;
 }					t_params;
+
+typedef struct		s_cam
+{
+	int start_x;
+	int start_y;
+}					t_cam;
 
 typedef struct 		s_mlx
 {
 	void	*mlx;
 	void	*mlx_wnd;
 	void	*img;
+	t_cam	*cam;
+	t_map	*map;
 	int 	bpp;
 	int 	sz;
 	int 	endian;
@@ -60,7 +77,7 @@ typedef struct 		s_draw
 	double			add;
 	double			cur_h;
 	double			count;
-	double			col;
+	int				col;
 	double			new_height;
 }					t_draw;
 
@@ -78,12 +95,14 @@ t_map				*getLast(t_map	*head);
 
 int					ft_atoi_base(char	*str, int	base);
 
-void				image(char *i_ptr, t_map *map, int bpp);
+void				image(t_mlx *fdf);
 
 t_map				*write_map(int fd);
 
 int					find_under(t_map *map, int y);
 
-t_value				make_izo(t_value izo);
+void				make_izo(t_params *izo);
+
+t_color				parse_color(int color);
 
 # endif

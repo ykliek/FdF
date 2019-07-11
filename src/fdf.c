@@ -12,16 +12,15 @@
 
 #include "fdf.h"
 
-t_value	make_izo(t_value izo)
+static void iso(int *x, int *y, int z)
 {
-	int		x_before;
-	int		y_before;
+    int previous_x;
+    int previous_y;
 
-	x_before = izo.x;
-	y_before = izo.y;
-	izo.y = (y_before - x_before) * cos(0.523599);
-	izo.x = -izo.height + (y_before - x_before) * sin(0.523599);
-	return (izo);
+    previous_x = *x;
+    previous_y = *y;
+    *x = (previous_x - previous_y) * cos(0.523599) + 600;
+    *y = -z + (previous_x + previous_y) * sin(0.523599) + 200;
 }
 
 t_value 		curr_dot(t_map *begin_list, int x, int y)
@@ -48,7 +47,36 @@ t_draw		get_double(t_map *map, t_value content)
 	return (values);
 }
 
-void		draw_y(char	*i_ptr, t_params val, t_map *map, t_map *head)
+void		put_pixel(t_mlx *fdf, t_params val, t_draw values)
+{
+	t_params tmp;
+
+	tmp = val;
+	iso(&tmp.y, &tmp.x, (int)values.add);
+	tmp.y += fdf->cam->start_y;
+	tmp.x += fdf->cam->start_x;
+	if (tmp.y >= 0 && tmp.y < WIDTH && tmp.x >= 0 && tmp.x < HEIGHT)
+		*(int *)(fdf->i_ptr + (((tmp.y + (int)values.add) + tmp.x * WIDTH) * tmp.bpp)) = values.col;
+}
+
+int		calc_color(int color1, int color2, double par, int len)
+{
+	t_color c;
+	t_color c2;
+	c2 = parse_color(color1);
+	t_color c1;
+	c1 = parse_color(color2);
+	double percent = par / len;
+
+	c.r = (
+		int)(c1.r * (1 - percent) + c2.r * percent);
+	c.g = (int)(c1.g * (1 - percent) + c2.g * percent);
+	c.b = (int)(c1.b * (1 - percent) + c2.b * percent);
+	c.color = (c.r << 16) + (c.g << 8) + c.b;
+	return (c.color);
+}
+
+void		draw_y(t_mlx *fdf, t_params val, t_map *map, t_map *head)
 {
 	t_draw		values;
 	t_params	new;
@@ -56,29 +84,33 @@ void		draw_y(char	*i_ptr, t_params val, t_map *map, t_map *head)
 	t_map		*end;
 
 	values.count = 0;
-	// new.x = map->next->content.x;
 	new.y = map->next->content.y;
 	end = getLast(map);
 	data = curr_dot(head, val.x, new.y);
 	values = get_double(map, data);
 	new.x = new.y - val.y;
+	if (values.cur_h > values.new_height)
+	{
+		new.x += values.cur_h;
+		new.y += values.cur_h;
+	}
+	if (values.cur_h < values.new_height)
+	{
+		new.x += values.new_height;
+		new.y += values.new_height;
+	}
 	if (val.y < end->content.y)
 		while (val.y <= new.y)
 		{
-			values.col = (int)(map->content.color * (1 - values.count / new.x) 
-				+ (values.count / new.x) * data.color);
-			*(int *)(i_ptr + (((val.y + (int)values.add)
-			 + val.x * WIDTH) * val.bpp)) = values.col;
-			if (values.add > values.new_height)
-				values.add -= values.cur_h / new.x;
-			if (values.add < values.new_height)
-				values.add += values.new_height / new.x;
+			values.col = calc_color(data.color, map->content.color, values.count, new.x);
+			values.add = 0;
+			put_pixel(fdf, val, values);
 			values.count++;
 			val.y++;
 		}
 }
 
-void		draw_x(char	*i_ptr, t_params val, t_map *map, t_map *head)
+void		draw_x(t_mlx *fdf, t_params val, t_map *map, t_map *head)
 {
 	t_draw		values;
 	t_params	new;
@@ -87,8 +119,6 @@ void		draw_x(char	*i_ptr, t_params val, t_map *map, t_map *head)
 
 	values.count = 0;
 	new.x = find_under(map, val.y);
-	// new.x = val.x + SCALE;
-	// new.y = map->next->content.y;
 	end = getLast(map);
 	data = curr_dot(head, new.x, val.y);
 	values = get_double(map, data);
@@ -96,10 +126,8 @@ void		draw_x(char	*i_ptr, t_params val, t_map *map, t_map *head)
 	if (val.x < end->content.x)
 		while (val.x <= new.x)
 		{
-			values.col = (int)(map->content.color * (1 - values.count / new.y)
-				+ (values.count / new.y) * data.color);
-			*(int *)(i_ptr + (((val.y + (int)values.add)
-			 + val.x * WIDTH) * val.bpp)) = values.col;
+			values.col = calc_color(data.color, map->content.color, values.count, new.y);
+			put_pixel(fdf, val, values);
 			if (values.add > values.new_height)
 				values.add -= values.cur_h / new.y;
 			if (values.add < values.new_height)
@@ -125,23 +153,31 @@ t_map		*write_map(int fd)
 	return (map);
 }
 
-void		image(char *i_ptr, t_map *map, int bpp)
+void		image(t_mlx	*fdf)
 {
 	t_params	val;
 	t_map		*head;
 	t_map		*last_xy;
 
-	head = map;
-	last_xy = getLast(map);
-	val.x = map->content.x;
-	val.y = map->content.y;
-	val.bpp = bpp;
-	while (map->next)
+
+	mlx_destroy_image(fdf->mlx, fdf->img);
+	fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
+	fdf->i_ptr = mlx_get_data_addr(fdf->img, &fdf->bpp, &fdf->sz, &fdf->endian);
+	fdf->bpp /= 8;
+	head = fdf->map;
+	val.x = fdf->map->content.x;
+	val.y = fdf->map->content.y;
+	val.z = fdf->map->content.height;
+	val.bpp = fdf->bpp;
+	while (fdf->map->next)
 	{
-		draw_y(i_ptr, val, map, head);
-		draw_x(i_ptr, val, map, head);
-		map = map->next;
-		val.y = map->content.y;
-		val.x = map->content.x;
+		draw_y(fdf, val, fdf->map, head);
+		draw_x(fdf, val, fdf->map, head);
+		fdf->map = fdf->map->next;
+		val.y = fdf->map->content.y;
+		val.x = fdf->map->content.x;
+		val.z = fdf->map->content.height;
 	}
+	fdf->map = head;
+	mlx_put_image_to_window(fdf->mlx, fdf->mlx_wnd, fdf->img, 0, 0);
 }

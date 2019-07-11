@@ -1,13 +1,19 @@
 cmake_minimum_required(VERSION 3.14)
-project(FdF C)
+project(fdf_dev)
 
-set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra - Werror")
 
 include_directories(includes)
 include_directories(libft)
 include_directories(src)
+link_directories(libft minilibx_macos)
+find_library(APPKIT AppKit)
+find_library(OPENGL OpenGl)
 
-add_executable(FdF
+add_executable(fdf_dev
         includes/fdf.h
         includes/mlx.h
         includes/mlx_int.h
@@ -81,8 +87,11 @@ add_executable(FdF
         libft/parser.c
         libft/precision.c
         libft/weigth_n_flags.c
+        minilibx_macos/mlx.h
         src/fdf.c
+        src/ft_atoi_base.c
         src/lst_tools.c
-        src/main.c
-        src/parse_map.c
-        src/ft_atoi_base.c)
+        src/new_main.c
+        src/parse_map.c)
+
+target_link_libraries(fdf_dev -lft -lmlx ${OPENGL} ${APPKIT})

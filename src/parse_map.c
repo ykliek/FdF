@@ -33,7 +33,6 @@ t_map	*read_map(char *line, int j)
 			data.color = ft_atoi_base("0xFFFFFF", 16);
 		data.x = j * SCALE;
 		data.y = i * SCALE;
-		// data = make_izo(data);
 		if (j == 0 || !map)
 			push(&map, data);
 		else
@@ -41,4 +40,16 @@ t_map	*read_map(char *line, int j)
 		i++;
 	}
 	return (map);
+}
+
+t_color		parse_color(int color)
+{
+	t_color c;
+
+	c.r = color >> 16;
+	color -= c.r << 16;
+	c.g = color >> 8;
+	color -= c.g << 8;
+	c.b = color;
+	return (c);
 }
