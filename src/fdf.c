@@ -110,6 +110,7 @@ void		draw_x(t_mlx *fdf, t_params val, t_map *map, t_map *head)
 	t_map		*end;
 
 	new.x = find_under(map, val.y);
+//	new.x = val.x + SCALE;
 	end = getLast(map);
 	data = curr_dot(head, new.x, val.y);
 	values = get_double(map, data);
