@@ -19,7 +19,7 @@ int		find_under(t_map *map, int y)
 
 	tmp = map;
 	new_x = -2;
-	if (tmp->next)	
+	if (tmp->next)
 		tmp = tmp->next;
 	while (tmp->next)
 	{

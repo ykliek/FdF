@@ -49,11 +49,8 @@ int		main(int argc, char **argv)
 {
 	int		fd;
 	t_mlx	fdf;
-	t_map	*map;
-	t_map	*end;
 
 	fd = open(argv[1], O_RDONLY);
-	end = getLast(map);
 	fdf.mlx = mlx_init();
 	fdf.mlx_wnd = mlx_new_window(fdf.mlx, WIDTH, HEIGHT, "FdF");
 	fdf.img = mlx_new_image(fdf.mlx, WIDTH, HEIGHT);

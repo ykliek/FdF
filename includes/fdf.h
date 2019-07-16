@@ -21,7 +21,7 @@
 
 # define WIDTH 1280
 # define HEIGHT 800
-# define SCALE 35
+# define SCALE 25
 
 typedef struct	s_color
 {

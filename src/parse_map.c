@@ -26,7 +26,7 @@ t_map	*read_map(char *line, int j)
 	str = ft_strsplit(line, ' ');
 	while (str[i])
 	{
-		data.height = ft_atoi(str[i]) * 2;
+		data.height = ft_atoi(str[i]);
 		if (ft_strchr(str[i], ','))
 			data.color = ft_atoi_base(ft_strchr(str[i], ',') + 1, 16);
 		else

@@ -19,8 +19,8 @@ static void iso(int *x, int *y, int z)
 
     previous_x = *x;
     previous_y = *y;
-    *x = (previous_x - previous_y) * cos(0.523599) + 600;
-    *y = -z + (previous_x + previous_y) * sin(0.523599) + 200;
+    *x = (previous_x - previous_y) * cos(0.523599) + 300;
+    *y = -z + (previous_x + previous_y) * sin(0.523599) + 100;
 }
 
 t_value 		curr_dot(t_map *begin_list, int x, int y)
@@ -56,7 +56,7 @@ void		put_pixel(t_mlx *fdf, t_params val, t_draw values)
 	tmp.y += fdf->cam->start_y;
 	tmp.x += fdf->cam->start_x;
 	if (tmp.y >= 0 && tmp.y < WIDTH && tmp.x >= 0 && tmp.x < HEIGHT)
-		*(int *)(fdf->i_ptr + ((tmp.y + (tmp.x  + (int)values.add) * WIDTH) * tmp.bpp)) = values.col;
+		*(int *)(fdf->i_ptr + (((tmp.y + (int)values.add) + tmp.x * WIDTH) * tmp.bpp)) = values.col;
 }
 
 int		calc_color(int color1, int color2, double par, int len)
@@ -82,27 +82,16 @@ void		draw_y(t_mlx *fdf, t_params val, t_map *map, t_map *head)
 	t_value		data;
 	t_map		*end;
 
-	values.count = 0;
 	new.y = map->next->content.y;
 	end = getLast(map);
 	data = curr_dot(head, val.x, new.y);
 	values = get_double(map, data);
+    values.count = 0;
 	new.x = new.y - val.y;
-	// if (values.cur_h > values.new_height)
-	// {
-	// 	new.x += values.cur_h;
-	// 	new.y += values.cur_h;
-	// }
-	// if (values.cur_h < values.new_height)
-	// {
-	// 	new.x += values.new_height;
-	// 	new.y += values.new_height;
-	// }
 	if (val.y < end->content.y)
 		while (val.y <= new.y)
 		{
 			values.col = calc_color(data.color, map->content.color, values.count, new.x);
-			values.add = 0;
 			put_pixel(fdf, val, values);
 			if (values.add > values.new_height)
 				values.add -= values.cur_h / new.x;
@@ -120,11 +109,11 @@ void		draw_x(t_mlx *fdf, t_params val, t_map *map, t_map *head)
 	t_value		data;
 	t_map		*end;
 
-	values.count = 0;
 	new.x = find_under(map, val.y);
 	end = getLast(map);
 	data = curr_dot(head, new.x, val.y);
 	values = get_double(map, data);
+	values.count = 0;
 	new.y = new.x - val.x; // length between two points
 	if (val.x < end->content.x)
 		while (val.x <= new.x)
@@ -136,6 +125,7 @@ void		draw_x(t_mlx *fdf, t_params val, t_map *map, t_map *head)
 			if (values.add < values.new_height)
 				values.add += values.new_height / new.y;
 			values.count++;
+
 			val.x++;
 		}
 }
@@ -160,7 +150,6 @@ void		image(t_mlx	*fdf)
 {
 	t_params	val;
 	t_map		*head;
-	t_map		*last_xy;
 
 
 	mlx_destroy_image(fdf->mlx, fdf->img);
