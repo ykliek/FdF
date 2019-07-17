@@ -42,15 +42,16 @@ void	make_scale(t_mlx *fdf)
 	fdf->map = head;
 }
 
-int		calc_color(int color1, int color2, double par, int len)
+int		calc_color(int color1, int color2, t_draw	values)
 {
-	t_color c;
-	t_color c2;
-	c2 = parse_color(color1);
-	t_color c1;
-	c1 = parse_color(color2);
-	double percent = par / len;
+	t_color		c;
+	t_color		c2;
+	t_color		c1;
+	double		percent;
 
+	percent = values.count / values.length;
+	c1 = parse_color(color2);
+	c2 = parse_color(color1);
 	c.r = (int)(c1.r * (1 - percent) + c2.r * percent);
 	c.g = (int)(c1.g * (1 - percent) + c2.g * percent);
 	c.b = (int)(c1.b * (1 - percent) + c2.b * percent);

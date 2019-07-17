@@ -17,10 +17,10 @@ void		put_pixel(t_mlx *fdf, t_params val, t_draw values)
 	t_params tmp;
 
 	tmp = val;
-	(fdf->izo_mod == 0) ? : iso(&tmp.y, &tmp.x, (int)values.add);
 	spin_figure(fdf, &tmp.y, &tmp.x, (int)values.add);
 	tmp.y += fdf->cam->start_y;
 	tmp.x += fdf->cam->start_x;
+	(fdf->izo_mod == 0) ? : iso(&tmp.y, &tmp.x, 0);
 	if (tmp.y >= 0 && tmp.y < WIDTH && tmp.x >= 0 && tmp.x < HEIGHT)
 		*(int *)(fdf->i_ptr + ((tmp.y + tmp.x * WIDTH) * tmp.bpp)) = values.col;
 }

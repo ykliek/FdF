@@ -1,23 +1,16 @@
 cmake_minimum_required(VERSION 3.14)
-project(fdf_dev)
+project(FdF C)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_C_STANDARD 11)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra - Werror")
-
-include_directories(includes)
+include_directories(include)
 include_directories(libft)
-include_directories(src)
+include_directories(minilibx_macos)
 link_directories(libft minilibx_macos)
-find_library(APPKIT AppKit)
 find_library(OPENGL OpenGl)
+find_library(APPKIT AppKit)
 
-add_executable(fdf_dev
-        includes/fdf.h
-        includes/mlx.h
-        includes/mlx_int.h
-        includes/mlx_new_window.h
+add_executable(FdF
         libft/colors.c
         libft/free_mem.c
         libft/ft_atoi.c
@@ -89,13 +82,13 @@ add_executable(fdf_dev
         libft/weigth_n_flags.c
         minilibx_macos/mlx.h
         src/draw_figure.c
-        src/functionality.c
-        src/key_bindings.c
-        src/tools.c
         src/fdf.c
         src/ft_atoi_base.c
+        src/functionality.c
+        src/key_bindings.c
         src/lst_tools.c
         src/main.c
-        src/parse_map.c)
+        src/parse_map.c
+        src/tools.c)
 
-target_link_libraries(fdf_dev -lft -lmlx ${OPENGL} ${APPKIT})
+target_link_libraries(FdF -lft -lmlx ${OPENGL} ${APPKIT})

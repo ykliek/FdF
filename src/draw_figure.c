@@ -49,10 +49,16 @@ void		draw_y(t_mlx *fdf, t_params val, t_map *map, t_map *head)
 	values = get_double(map, data);
     values.count = 0;
     values.length = new.y - val.y;
+	values.step = (values.cur_h != values.new_height) ? 
+	(values.new_height - values.cur_h) / values.length : 0;
+	values.val_x = val.x;
+	values.val_x -= values.cur_h;
 	if (val.y < end->content.y)
 		while (val.y <= new.y)
 		{
-			values.col = calc_color(data.color, map->content.color, values.count, values.length);
+			values.val_x -= values.step;
+			val.x = (int)values.val_x;
+			values.col = calc_color(data.color, map->content.color, values);
 			put_pixel(fdf, val, values);
 			values.count++;
 			val.y++;
@@ -71,11 +77,13 @@ void		draw_x(t_mlx *fdf, t_params val, t_map *map, t_map *head)
 	data = curr_dot(head, new.x, val.y);
 	values = get_double(map, data);
 	values.count = 0;
+	val.x -= values.cur_h;
+	new.x -= values.new_height;
 	values.length = new.x - val.x;
 	if (val.x < end->content.x)
 		while (val.x <= new.x)
 		{
-			values.col = calc_color(data.color, map->content.color, values.count, values.length);
+			values.col = calc_color(data.color, map->content.color, values);
 			put_pixel(fdf, val, values);
 			values.count++;
 			val.x++;

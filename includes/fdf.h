@@ -82,6 +82,8 @@ typedef struct 		s_mlx
 
 typedef struct 		s_draw
 {
+	double			step;
+	double			val_x;
 	int				length;
 	double			add;
 	double			cur_h;
@@ -130,7 +132,7 @@ t_map				*write_map(int fd);
 
 void				make_scale(t_mlx *fdf);
 
-int					calc_color(int color1, int color2, double par, int len);
+int					calc_color(int color1, int color2, t_draw	values);
 
 void 				spin_figure(t_mlx *fdf, int *x, int *y, int z);
 
