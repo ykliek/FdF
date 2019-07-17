@@ -205,6 +205,11 @@ CMakeFiles/fdf_dev.dir/libft/precision.c.o: ../libft/precision.c
 CMakeFiles/fdf_dev.dir/libft/weigth_n_flags.c.o: ../libft/libft.h
 CMakeFiles/fdf_dev.dir/libft/weigth_n_flags.c.o: ../libft/weigth_n_flags.c
 
+CMakeFiles/fdf_dev.dir/src/draw_figure.c.o: ../includes/libft.h
+CMakeFiles/fdf_dev.dir/src/draw_figure.c.o: ../includes/mlx.h
+CMakeFiles/fdf_dev.dir/src/draw_figure.c.o: ../src/draw_figure.c
+CMakeFiles/fdf_dev.dir/src/draw_figure.c.o: ../src/fdf.h
+
 CMakeFiles/fdf_dev.dir/src/fdf.c.o: ../includes/libft.h
 CMakeFiles/fdf_dev.dir/src/fdf.c.o: ../includes/mlx.h
 CMakeFiles/fdf_dev.dir/src/fdf.c.o: ../src/fdf.c
@@ -215,18 +220,33 @@ CMakeFiles/fdf_dev.dir/src/ft_atoi_base.c.o: ../includes/mlx.h
 CMakeFiles/fdf_dev.dir/src/ft_atoi_base.c.o: ../src/fdf.h
 CMakeFiles/fdf_dev.dir/src/ft_atoi_base.c.o: ../src/ft_atoi_base.c
 
+CMakeFiles/fdf_dev.dir/src/functionality.c.o: ../includes/libft.h
+CMakeFiles/fdf_dev.dir/src/functionality.c.o: ../includes/mlx.h
+CMakeFiles/fdf_dev.dir/src/functionality.c.o: ../src/fdf.h
+CMakeFiles/fdf_dev.dir/src/functionality.c.o: ../src/functionality.c
+
+CMakeFiles/fdf_dev.dir/src/key_bindings.c.o: ../includes/libft.h
+CMakeFiles/fdf_dev.dir/src/key_bindings.c.o: ../includes/mlx.h
+CMakeFiles/fdf_dev.dir/src/key_bindings.c.o: ../src/fdf.h
+CMakeFiles/fdf_dev.dir/src/key_bindings.c.o: ../src/key_bindings.c
+
 CMakeFiles/fdf_dev.dir/src/lst_tools.c.o: ../includes/libft.h
 CMakeFiles/fdf_dev.dir/src/lst_tools.c.o: ../includes/mlx.h
 CMakeFiles/fdf_dev.dir/src/lst_tools.c.o: ../src/fdf.h
 CMakeFiles/fdf_dev.dir/src/lst_tools.c.o: ../src/lst_tools.c
 
-CMakeFiles/fdf_dev.dir/src/new_main.c.o: ../includes/libft.h
-CMakeFiles/fdf_dev.dir/src/new_main.c.o: ../includes/mlx.h
-CMakeFiles/fdf_dev.dir/src/new_main.c.o: ../src/fdf.h
-CMakeFiles/fdf_dev.dir/src/new_main.c.o: ../src/new_main.c
+CMakeFiles/fdf_dev.dir/src/main.c.o: ../includes/libft.h
+CMakeFiles/fdf_dev.dir/src/main.c.o: ../includes/mlx.h
+CMakeFiles/fdf_dev.dir/src/main.c.o: ../src/fdf.h
+CMakeFiles/fdf_dev.dir/src/main.c.o: ../src/main.c
 
 CMakeFiles/fdf_dev.dir/src/parse_map.c.o: ../includes/libft.h
 CMakeFiles/fdf_dev.dir/src/parse_map.c.o: ../includes/mlx.h
 CMakeFiles/fdf_dev.dir/src/parse_map.c.o: ../src/fdf.h
 CMakeFiles/fdf_dev.dir/src/parse_map.c.o: ../src/parse_map.c
+
+CMakeFiles/fdf_dev.dir/src/tools.c.o: ../includes/libft.h
+CMakeFiles/fdf_dev.dir/src/tools.c.o: ../includes/mlx.h
+CMakeFiles/fdf_dev.dir/src/tools.c.o: ../src/fdf.h
+CMakeFiles/fdf_dev.dir/src/tools.c.o: ../src/tools.c
 

@@ -24,9 +24,9 @@ stdarg.h
 
 ../includes/mlx.h
 
-/Users/kshchyrina/Desktop/fdf_dev/src/fdf.h
+/Users/ykliek/Desktop/fdf_dev/src/fdf.h
 mlx.h
-/Users/kshchyrina/Desktop/fdf_dev/src/mlx.h
+/Users/ykliek/Desktop/fdf_dev/src/mlx.h
 stdlib.h
 -
 stdio.h
@@ -34,9 +34,9 @@ stdio.h
 math.h
 -
 libft.h
-/Users/kshchyrina/Desktop/fdf_dev/src/libft.h
+/Users/ykliek/Desktop/fdf_dev/src/libft.h
 
-/Users/kshchyrina/Desktop/fdf_dev/src/lst_tools.c
+/Users/ykliek/Desktop/fdf_dev/src/main.c
 fdf.h
-/Users/kshchyrina/Desktop/fdf_dev/src/fdf.h
+/Users/ykliek/Desktop/fdf_dev/src/fdf.h
 

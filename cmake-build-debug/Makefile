@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/kshchyrina/Desktop/fdf_dev
+CMAKE_SOURCE_DIR = /Users/ykliek/Desktop/fdf_dev
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/kshchyrina/Desktop/fdf_dev/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/ykliek/Desktop/fdf_dev/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kshchyrina/Desktop/fdf_dev/cmake-build-debug/CMakeFiles /Users/kshchyrina/Desktop/fdf_dev/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ykliek/Desktop/fdf_dev/cmake-build-debug/CMakeFiles /Users/ykliek/Desktop/fdf_dev/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kshchyrina/Desktop/fdf_dev/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ykliek/Desktop/fdf_dev/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -1959,6 +1959,33 @@ libft/weigth_n_flags.c.s:
 	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/libft/weigth_n_flags.c.s
 .PHONY : libft/weigth_n_flags.c.s
 
+src/draw_figure.o: src/draw_figure.c.o
+
+.PHONY : src/draw_figure.o
+
+# target to build an object file
+src/draw_figure.c.o:
+	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/draw_figure.c.o
+.PHONY : src/draw_figure.c.o
+
+src/draw_figure.i: src/draw_figure.c.i
+
+.PHONY : src/draw_figure.i
+
+# target to preprocess a source file
+src/draw_figure.c.i:
+	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/draw_figure.c.i
+.PHONY : src/draw_figure.c.i
+
+src/draw_figure.s: src/draw_figure.c.s
+
+.PHONY : src/draw_figure.s
+
+# target to generate assembly for a file
+src/draw_figure.c.s:
+	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/draw_figure.c.s
+.PHONY : src/draw_figure.c.s
+
 src/fdf.o: src/fdf.c.o
 
 .PHONY : src/fdf.o
@@ -2013,6 +2040,60 @@ src/ft_atoi_base.c.s:
 	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/ft_atoi_base.c.s
 .PHONY : src/ft_atoi_base.c.s
 
+src/functionality.o: src/functionality.c.o
+
+.PHONY : src/functionality.o
+
+# target to build an object file
+src/functionality.c.o:
+	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/functionality.c.o
+.PHONY : src/functionality.c.o
+
+src/functionality.i: src/functionality.c.i
+
+.PHONY : src/functionality.i
+
+# target to preprocess a source file
+src/functionality.c.i:
+	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/functionality.c.i
+.PHONY : src/functionality.c.i
+
+src/functionality.s: src/functionality.c.s
+
+.PHONY : src/functionality.s
+
+# target to generate assembly for a file
+src/functionality.c.s:
+	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/functionality.c.s
+.PHONY : src/functionality.c.s
+
+src/key_bindings.o: src/key_bindings.c.o
+
+.PHONY : src/key_bindings.o
+
+# target to build an object file
+src/key_bindings.c.o:
+	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/key_bindings.c.o
+.PHONY : src/key_bindings.c.o
+
+src/key_bindings.i: src/key_bindings.c.i
+
+.PHONY : src/key_bindings.i
+
+# target to preprocess a source file
+src/key_bindings.c.i:
+	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/key_bindings.c.i
+.PHONY : src/key_bindings.c.i
+
+src/key_bindings.s: src/key_bindings.c.s
+
+.PHONY : src/key_bindings.s
+
+# target to generate assembly for a file
+src/key_bindings.c.s:
+	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/key_bindings.c.s
+.PHONY : src/key_bindings.c.s
+
 src/lst_tools.o: src/lst_tools.c.o
 
 .PHONY : src/lst_tools.o
@@ -2040,32 +2121,32 @@ src/lst_tools.c.s:
 	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/lst_tools.c.s
 .PHONY : src/lst_tools.c.s
 
-src/new_main.o: src/new_main.c.o
+src/main.o: src/main.c.o
 
-.PHONY : src/new_main.o
+.PHONY : src/main.o
 
 # target to build an object file
-src/new_main.c.o:
-	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/new_main.c.o
-.PHONY : src/new_main.c.o
+src/main.c.o:
+	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/main.c.o
+.PHONY : src/main.c.o
 
-src/new_main.i: src/new_main.c.i
+src/main.i: src/main.c.i
 
-.PHONY : src/new_main.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-src/new_main.c.i:
-	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/new_main.c.i
-.PHONY : src/new_main.c.i
+src/main.c.i:
+	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/main.c.i
+.PHONY : src/main.c.i
 
-src/new_main.s: src/new_main.c.s
+src/main.s: src/main.c.s
 
-.PHONY : src/new_main.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-src/new_main.c.s:
-	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/new_main.c.s
-.PHONY : src/new_main.c.s
+src/main.c.s:
+	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/main.c.s
+.PHONY : src/main.c.s
 
 src/parse_map.o: src/parse_map.c.o
 
@@ -2093,6 +2174,33 @@ src/parse_map.s: src/parse_map.c.s
 src/parse_map.c.s:
 	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/parse_map.c.s
 .PHONY : src/parse_map.c.s
+
+src/tools.o: src/tools.c.o
+
+.PHONY : src/tools.o
+
+# target to build an object file
+src/tools.c.o:
+	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/tools.c.o
+.PHONY : src/tools.c.o
+
+src/tools.i: src/tools.c.i
+
+.PHONY : src/tools.i
+
+# target to preprocess a source file
+src/tools.c.i:
+	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/tools.c.i
+.PHONY : src/tools.c.i
+
+src/tools.s: src/tools.c.s
+
+.PHONY : src/tools.s
+
+# target to generate assembly for a file
+src/tools.c.s:
+	$(MAKE) -f CMakeFiles/fdf_dev.dir/build.make CMakeFiles/fdf_dev.dir/src/tools.c.s
+.PHONY : src/tools.c.s
 
 # Help Target
 help:
@@ -2307,21 +2415,33 @@ help:
 	@echo "... libft/weigth_n_flags.o"
 	@echo "... libft/weigth_n_flags.i"
 	@echo "... libft/weigth_n_flags.s"
+	@echo "... src/draw_figure.o"
+	@echo "... src/draw_figure.i"
+	@echo "... src/draw_figure.s"
 	@echo "... src/fdf.o"
 	@echo "... src/fdf.i"
 	@echo "... src/fdf.s"
 	@echo "... src/ft_atoi_base.o"
 	@echo "... src/ft_atoi_base.i"
 	@echo "... src/ft_atoi_base.s"
+	@echo "... src/functionality.o"
+	@echo "... src/functionality.i"
+	@echo "... src/functionality.s"
+	@echo "... src/key_bindings.o"
+	@echo "... src/key_bindings.i"
+	@echo "... src/key_bindings.s"
 	@echo "... src/lst_tools.o"
 	@echo "... src/lst_tools.i"
 	@echo "... src/lst_tools.s"
-	@echo "... src/new_main.o"
-	@echo "... src/new_main.i"
-	@echo "... src/new_main.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 	@echo "... src/parse_map.o"
 	@echo "... src/parse_map.i"
 	@echo "... src/parse_map.s"
+	@echo "... src/tools.o"
+	@echo "... src/tools.i"
+	@echo "... src/tools.s"
 .PHONY : help
 
 

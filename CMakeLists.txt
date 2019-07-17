@@ -88,10 +88,14 @@ add_executable(fdf_dev
         libft/precision.c
         libft/weigth_n_flags.c
         minilibx_macos/mlx.h
+        src/draw_figure.c
+        src/functionality.c
+        src/key_bindings.c
+        src/tools.c
         src/fdf.c
         src/ft_atoi_base.c
         src/lst_tools.c
-        src/new_main.c
+        src/main.c
         src/parse_map.c)
 
 target_link_libraries(fdf_dev -lft -lmlx ${OPENGL} ${APPKIT})

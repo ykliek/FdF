@@ -12,26 +12,6 @@
 
 #include "fdf.h"
 
-int		find_under(t_map *map, int y)
-{
-	int		new_x;
-	t_map	*tmp;
-
-	tmp = map;
-	new_x = -2;
-	tmp = tmp->next;
-	while (tmp->next)
-	{
-		if (y == tmp->content.y)
-		{
-			new_x = tmp->content.x;
-			break ;
-		}
-		tmp = tmp->next;
-	}
-	return (new_x);	
-}
-
 void		deleteList(t_map	**head)
 {
 	t_map	*prev;

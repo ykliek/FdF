@@ -20,11 +20,15 @@ LIB = libft/libft.a
 
 MLX = minilibx_macos/libmlx.a
 
-SRCS = src/new_main.c \
+SRCS = src/main.c \
 		src/fdf.c \
 		src/lst_tools.c \
 		src/parse_map.c \
-		src/ft_atoi_base.c
+		src/ft_atoi_base.c \
+		src/functionality.c \
+		src/key_bindings.c \
+		src/draw_figure.c \
+		src/tools.c
 
 INCLUDE = ./includes/fdf.h
 

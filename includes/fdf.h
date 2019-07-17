@@ -21,7 +21,8 @@
 
 # define WIDTH 1280
 # define HEIGHT 800
-# define SCALE 25
+// # define WIDTH 1920
+// # define HEIGHT 1366
 
 typedef struct	s_color
 {
@@ -51,6 +52,7 @@ typedef struct 		s_params
 	int				y;
 	int				z;
 	int				bpp;
+	int				tmp;
 }					t_params;
 
 typedef struct		s_cam
@@ -68,13 +70,19 @@ typedef struct 		s_mlx
 	t_map	*map;
 	int		izo_mod;
 	int 	bpp;
+	int		color_t;
 	int 	sz;
+	int		scale;
+	int		lamp;
 	int 	endian;
 	char	*i_ptr;
+	int		spin_mode;
+	double		alfa;
 }					t_mlx;
 
 typedef struct 		s_draw
 {
+	int				length;
 	double			add;
 	double			cur_h;
 	double			count;
@@ -105,5 +113,33 @@ int					find_under(t_map *map, int y);
 void				make_izo(t_params *izo);
 
 t_color				parse_color(int color);
+
+int					key_press(int keycode, t_mlx *fdf);
+
+void				change_color_btype(int keycode, t_mlx *fdf);
+
+void				ret_scale(t_mlx *fdf);
+
+void				move(t_mlx *fdf, int keycode);
+
+void				zoom(int keycode, t_mlx *fdf);
+
+void				ret_scale(t_mlx *fdf);
+
+t_map				*write_map(int fd);
+
+void				make_scale(t_mlx *fdf);
+
+int					calc_color(int color1, int color2, double par, int len);
+
+void 				spin_figure(t_mlx *fdf, int *x, int *y, int z);
+
+void				iso(int *x, int *y, int z);
+
+void				draw_y(t_mlx *fdf, t_params val, t_map *map, t_map *head);
+
+void				draw_x(t_mlx *fdf, t_params val, t_map *map, t_map *head);
+
+void				put_pixel(t_mlx *fdf, t_params val, t_draw values);
 
 # endif
