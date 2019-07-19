@@ -25,6 +25,7 @@ t_map	*read_map(char *line, int j)
 	while (str[i])
 	{
 		data.height = ft_atoi(str[i]);
+		data.id = (data.height != 0) ? NUM(data.height) : 0;
 		if (ft_strchr(str[i], ','))
 			data.color = ft_atoi_base(ft_strchr(str[i], ',') + 1, 16);
 		else

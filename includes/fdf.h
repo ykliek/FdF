@@ -24,6 +24,9 @@
 // # define WIDTH 1920
 // # define HEIGHT 1366
 
+# define MAX(x, y) (x > y) ? x : y
+# define NUM(x) (x > 0) ? 1 : -1
+
 typedef struct	s_color
 {
 	int r;
@@ -38,6 +41,7 @@ typedef	struct 	s_value
 	int			color;
 	int			x;
 	int			y;
+	int			id;
 }				t_value;
 
 typedef	struct 		s_map
@@ -51,8 +55,13 @@ typedef struct 		s_params
 	int				x;
 	int				y;
 	int				z;
+	int 			c1;
 	int				bpp;
 	int				tmp;
+	int 			c2;
+	int				new_x;
+	int				new_y;
+	int				new_z;
 }					t_params;
 
 typedef struct		s_cam
@@ -75,6 +84,8 @@ typedef struct 		s_mlx
 	int		scale;
 	int		lamp;
 	int 	endian;
+	double		up;
+	int			button;
 	char	*i_ptr;
 	int		spin_mode;
 	double		alfa;
@@ -132,16 +143,20 @@ t_map				*write_map(int fd);
 
 void				make_scale(t_mlx *fdf);
 
-int					calc_color(int color1, int color2, t_draw	values);
+int					calc_color(int color1, int color2, double percent);
 
 void 				spin_figure(t_mlx *fdf, int *x, int *y, int z);
 
 void				iso(int *x, int *y, int z);
 
-void				draw_y(t_mlx *fdf, t_params val, t_map *map, t_map *head);
+void				draw_y(t_mlx *fdf, t_map *head);
+// void				draw_y(t_mlx *fdf, t_params val, t_map *map, t_map *head);
 
-void				draw_x(t_mlx *fdf, t_params val, t_map *map, t_map *head);
+void				draw_x(t_mlx *fdf, t_map *head);
 
-void				put_pixel(t_mlx *fdf, t_params val, t_draw values);
+void				put_pixel(t_mlx *fdf, int x, int y, int color);
+// void				put_pixel(t_mlx *fdf, t_params val, t_draw values);
+
+int					mouse_press(int button, int x, int y, t_mlx *fdf);
 
 # endif

@@ -12,7 +12,7 @@
 
 NAME = fdf
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -02
 
 FRAMEWORKS = -framework OpenGL -framework AppKit
 

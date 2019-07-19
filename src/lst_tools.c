@@ -27,12 +27,15 @@ void		deleteList(t_map	**head)
 
 t_map	*getLast(t_map	*head)
 {
-	if (head)
+	t_map		*begin;
+
+	begin = head;
+	if (begin)
 	{
-		while (head->next)
-			head = head->next;
+		while (begin->next)
+			begin = begin->next;
 	}
-	return (head);
+	return (begin);
 }
 
 void	pushBack(t_map	*head,	t_value	data)

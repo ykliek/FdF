@@ -12,42 +12,51 @@
 
 #include "fdf.h"
 
-void		put_pixel(t_mlx *fdf, t_params val, t_draw values)
+void		growth(t_mlx *fdf)
 {
-	t_params tmp;
+	t_map	*head;
 
-	tmp = val;
-	spin_figure(fdf, &tmp.y, &tmp.x, (int)values.add);
-	tmp.y += fdf->cam->start_y;
-	tmp.x += fdf->cam->start_x;
-	(fdf->izo_mod == 0) ? : iso(&tmp.y, &tmp.x, 0);
-	if (tmp.y >= 0 && tmp.y < WIDTH && tmp.x >= 0 && tmp.x < HEIGHT)
-		*(int *)(fdf->i_ptr + ((tmp.y + tmp.x * WIDTH) * tmp.bpp)) = values.col;
+	head = fdf->map;
+	while (fdf->map != NULL)
+	{
+		if(fdf->map->content.id == 1)
+			fdf->map->content.height += fdf->up;
+		if(fdf->map->content.id == -1)
+			fdf->map->content.height -= fdf->up;
+		fdf->map = fdf->map->next;
+	}
+	fdf->map = head;
+}
+
+void		put_pixel(t_mlx *fdf, int x, int y, int color)
+{
+	// t_params tmp;
+
+	// tmp = val;
+	// spin_figure(fdf, &tmp.y, &tmp.x, tmp.z);
+	y += fdf->cam->start_y;
+	x += fdf->cam->start_x;
+//	 (fdf->izo_mod == 0) ? : iso(&y, &x, 0);
+	if (y >= 0 && y < WIDTH && x >= 0 && x < HEIGHT)
+		*(int *)(fdf->i_ptr + ((y + x * WIDTH) * fdf->bpp)) = color;
 }
 
 void		image(t_mlx	*fdf)
 {
-	t_params	val;
 	t_map		*head;
 
 	mlx_destroy_image(fdf->mlx, fdf->img);
+	growth(fdf);
 	head = fdf->map;
 	(fdf->lamp == 1) ? : make_scale(fdf);
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
 	fdf->i_ptr = mlx_get_data_addr(fdf->img, &fdf->bpp, &fdf->sz, &fdf->endian);
 	fdf->bpp /= 8;
-	val.x = fdf->map->content.x;
-	val.y = fdf->map->content.y;
-	val.z = fdf->map->content.height;
-	val.bpp = fdf->bpp;
 	while (fdf->map->next)
 	{
-		draw_y(fdf, val, fdf->map, head);
-		draw_x(fdf, val, fdf->map, head);
+		draw_y(fdf, head);
+		 draw_x(fdf, head);
 		fdf->map = fdf->map->next;
-		val.y = fdf->map->content.y;
-		val.x = fdf->map->content.x;
-		val.z = fdf->map->content.height;
 	}
 	fdf->map = head;
 	mlx_put_image_to_window(fdf->mlx, fdf->mlx_wnd, fdf->img, 0, 0);

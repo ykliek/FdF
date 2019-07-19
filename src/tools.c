@@ -42,14 +42,12 @@ void	make_scale(t_mlx *fdf)
 	fdf->map = head;
 }
 
-int		calc_color(int color1, int color2, t_draw	values)
+int		calc_color(int color1, int color2, double percent)
 {
 	t_color		c;
 	t_color		c2;
 	t_color		c1;
-	double		percent;
 
-	percent = values.count / values.length;
 	c1 = parse_color(color2);
 	c2 = parse_color(color1);
 	c.r = (int)(c1.r * (1 - percent) + c2.r * percent);
@@ -79,6 +77,6 @@ void	iso(int *x, int *y, int z)
 
 	previous_x = *x;
 	previous_y = *y;
-	*x = (previous_x - previous_y) * cos(0.523599) + 300;
-	*y = -z + (previous_x + previous_y) * sin(0.523599) + 100;
+	*x = (-z + (previous_x - previous_y)) * cos(0.523599) * 0.7;
+	*y = (previous_x + previous_y) * sin(0.523599) * 0.7;
 }

@@ -14,6 +14,7 @@
 
 int		color(int	keycode, t_mlx *fdf)
 {	
+	fdf->up = 0;
 	if (keycode >= 83 && keycode <= 92)
 	{
 		change_color_btype(keycode, fdf);
@@ -48,6 +49,7 @@ int		spin(int keycode, t_mlx	*fdf)
 			fdf->spin_mode = 0;
 			fdf->alfa = (keycode == 0) ? fdf->alfa + 0.1 : fdf->alfa - 0.1;
 		}
+		fdf->up = 0;
 		image(fdf);
 	}
 	color(keycode, fdf);
@@ -56,6 +58,7 @@ int		spin(int keycode, t_mlx	*fdf)
 
 int		key_press(int keycode, t_mlx *fdf)
 {
+	fdf->up = 0;
 	if (keycode == 49 || keycode == 53)
 		exit(EXIT_SUCCESS);
 	if (keycode == 123 || keycode == 124 || keycode == 125 || keycode == 126)
@@ -68,8 +71,8 @@ int		key_press(int keycode, t_mlx *fdf)
 	{
 		fdf->lamp = 1;
 		fdf->izo_mod = (fdf->izo_mod == 0) ? 1 : 0;
-		fdf->cam->start_x = 100;
-		fdf->cam->start_y = 100;
+		fdf->cam->start_x = 0;
+		fdf->cam->start_y = 0;
 		image(fdf);
 	}
 	if (keycode == 69 || keycode == 78)
@@ -80,5 +83,21 @@ int		key_press(int keycode, t_mlx *fdf)
 		image(fdf);
 	}
 	spin(keycode, fdf);
+	return (0);
+}
+
+int		mouse_press(int button, int x, int y, t_mlx *fdf)
+{
+	fdf->lamp = 1;
+	if (button == 4)
+	{
+		fdf->up = 1;
+		image(fdf);
+	}
+	else if (button == 5)
+	{
+		fdf->up = -1;
+		image(fdf);
+	}
 	return (0);
 }
