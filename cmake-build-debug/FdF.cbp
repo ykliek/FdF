@@ -326,6 +326,9 @@
 		<Unit filename="/Users/ykliek/Desktop/fdf_dev/src/tools.c">
 			<Option target="FdF"/>
 		</Unit>
+		<Unit filename="/Users/ykliek/Desktop/fdf_dev/src/validator.c">
+			<Option target="FdF"/>
+		</Unit>
 		<Unit filename="/Users/ykliek/Desktop/fdf_dev/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

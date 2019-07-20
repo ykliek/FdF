@@ -53,24 +53,19 @@ t_color		parse_color(int color)
 	return (c);
 }
 
-int		find_under(t_map *map, int y)
+t_map		*find_under(t_map *map, int y)
 {
-	int		new_x;
 	t_map	*tmp;
 
 	tmp = map;
-	new_x = 0;
 	tmp = tmp->next;
 	while (tmp != NULL)
 	{
 		if (y == tmp->content.y)
-		{
-			new_x = tmp->content.x;
-			break ;
-		}
+			return (tmp);
 		tmp = tmp->next;
 	}
-	return (new_x);	
+	return (tmp);	
 }
 
 void	ret_scale(t_mlx *fdf)

@@ -12,7 +12,7 @@
 
 NAME = fdf
 
-FLAGS = -Wall -Werror -Wextra -02
+FLAGS = -Wall -Werror -Wextra
 
 FRAMEWORKS = -framework OpenGL -framework AppKit
 
@@ -28,7 +28,8 @@ SRCS = src/main.c \
 		src/functionality.c \
 		src/key_bindings.c \
 		src/draw_figure.c \
-		src/tools.c
+		src/tools.c \
+		src/validator.c
 
 INCLUDE = ./includes/fdf.h
 

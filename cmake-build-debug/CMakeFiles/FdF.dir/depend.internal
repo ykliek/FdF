@@ -250,3 +250,8 @@ CMakeFiles/FdF.dir/src/tools.c.o
  ../minilibx_macos/mlx.h
  /Users/ykliek/Desktop/fdf_dev/src/fdf.h
  /Users/ykliek/Desktop/fdf_dev/src/tools.c
+CMakeFiles/FdF.dir/src/validator.c.o
+ ../libft/libft.h
+ ../minilibx_macos/mlx.h
+ /Users/ykliek/Desktop/fdf_dev/src/fdf.h
+ /Users/ykliek/Desktop/fdf_dev/src/validator.c

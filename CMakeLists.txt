@@ -89,6 +89,7 @@ add_executable(FdF
         src/lst_tools.c
         src/main.c
         src/parse_map.c
-        src/tools.c)
+        src/tools.c
+        src/validator.c)
 
 target_link_libraries(FdF -lft -lmlx ${OPENGL} ${APPKIT})

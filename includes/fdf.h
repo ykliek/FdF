@@ -62,6 +62,11 @@ typedef struct 		s_params
 	int				new_x;
 	int				new_y;
 	int				new_z;
+	int				new1_x;
+	int				new2_y;
+	int				new3_z;
+	int				end_x;
+	int				end_y;
 }					t_params;
 
 typedef struct		s_cam
@@ -81,6 +86,7 @@ typedef struct 		s_mlx
 	int 	bpp;
 	int		color_t;
 	int 	sz;
+	t_map 	*end;
 	int		scale;
 	int		lamp;
 	int 	endian;
@@ -89,6 +95,7 @@ typedef struct 		s_mlx
 	char	*i_ptr;
 	int		spin_mode;
 	double		alfa;
+	double		alfa2;
 }					t_mlx;
 
 typedef struct 		s_draw
@@ -121,7 +128,7 @@ void				image(t_mlx *fdf);
 
 t_map				*write_map(int fd);
 
-int					find_under(t_map *map, int y);
+t_map		*find_under(t_map *map, int y);
 
 void				make_izo(t_params *izo);
 
@@ -145,7 +152,7 @@ void				make_scale(t_mlx *fdf);
 
 int					calc_color(int color1, int color2, double percent);
 
-void 				spin_figure(t_mlx *fdf, int *x, int *y, int z);
+void	spin_figure(t_mlx *fdf, double *x, double *y, int z, t_params dots);
 
 void				iso(int *x, int *y, int z);
 
@@ -158,5 +165,7 @@ void				put_pixel(t_mlx *fdf, int x, int y, int color);
 // void				put_pixel(t_mlx *fdf, t_params val, t_draw values);
 
 int					mouse_press(int button, int x, int y, t_mlx *fdf);
+
+int		check_length(t_map *map);
 
 # endif

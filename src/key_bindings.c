@@ -31,6 +31,10 @@ int		color(int	keycode, t_mlx *fdf)
 		else if (fdf->color_t == 2)
 			fdf->color_t = 0;
 	}
+	if (keycode == 15)
+	{
+		
+	}
 	return (0);
 }
 
@@ -47,7 +51,7 @@ int		spin(int keycode, t_mlx	*fdf)
 		if (keycode == 0 || keycode == 2)
 		{
 			fdf->spin_mode = 0;
-			fdf->alfa = (keycode == 0) ? fdf->alfa + 0.1 : fdf->alfa - 0.1;
+			fdf->alfa2 = (keycode == 0) ? fdf->alfa2 + 0.1 : fdf->alfa2 - 0.1;
 		}
 		fdf->up = 0;
 		image(fdf);
@@ -71,8 +75,6 @@ int		key_press(int keycode, t_mlx *fdf)
 	{
 		fdf->lamp = 1;
 		fdf->izo_mod = (fdf->izo_mod == 0) ? 1 : 0;
-		fdf->cam->start_x = 0;
-		fdf->cam->start_y = 0;
 		image(fdf);
 	}
 	if (keycode == 69 || keycode == 78)

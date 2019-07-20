@@ -22,6 +22,8 @@ t_map	*write_map(int fd)
 	map = NULL;
 	while (get_next_line(fd, &line) == 1)
 	{
+		if (ft_strlen(ft_strtrim(line)) == 0)
+			return (NULL);
 		lst_add(&map, read_map(line, i));
 		i++;
 	}
@@ -57,17 +59,15 @@ int		calc_color(int color1, int color2, double percent)
 	return (c.color);
 }
 
-void	spin_figure(t_mlx *fdf, int *x, int *y, int z)
+void	spin_figure(t_mlx *fdf, double *x, double *y, int z, t_params dots)
 {
 	int		previous_x;
 	int		previous_y;
 
 	previous_x = *x;
 	previous_y= *y;
-	if (fdf->spin_mode == 0)
-		*x = previous_x * cos(fdf->alfa) + z * sin(fdf->alfa); // поворот по осі У
-	if (fdf->spin_mode == 1)
-		*y = previous_y * cos(fdf->alfa) + z * sin(fdf->alfa); // поворот по осі У
+	*x = (previous_x - dots.end_x / 2) * cos(fdf->alfa2) + z * sin(fdf->alfa2); // поворот по осі У
+	*y = (previous_y - dots.end_y / 2) * cos(fdf->alfa) + z * sin(fdf->alfa); // поворот по осі X
 }
 
 void	iso(int *x, int *y, int z)

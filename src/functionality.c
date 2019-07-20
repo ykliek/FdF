@@ -29,17 +29,23 @@ void	zoom(int keycode, t_mlx *fdf)
 	t_map	*head;
 	int 	x;
 	int 	y;
+	int		tmp;
 
 	head = fdf->map;
-	fdf->map = getLast(fdf->map);
+	fdf->map = fdf->end;
 	x = fdf->map->content.x * fdf->scale;
 	y = fdf->map->content.y * fdf->scale;
+	tmp = fdf->scale;
 	if (keycode == 69)
-		fdf->scale += 5;
+	{
+		fdf->scale *= 1.1;
+		fdf->scale = (fdf->scale == tmp) ? fdf->scale + 1 : fdf->scale;
+	}
 	if (keycode == 78)
-		fdf->scale -= 5;
-	fdf->cam->start_y -= ((fdf->map->content.y * fdf->scale) - y) / 2; 
-	fdf->cam->start_x -= ((fdf->map->content.x * fdf->scale) - x) / 2;
+	{
+		fdf->scale /= 1.1;
+		fdf->scale = (fdf->scale == 0) ? 1 : fdf->scale;
+	}
 	fdf->map = head; 
 }
 

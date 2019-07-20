@@ -76,6 +76,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/FdF.dir/src/main.c.o"
   "CMakeFiles/FdF.dir/src/parse_map.c.o"
   "CMakeFiles/FdF.dir/src/tools.c.o"
+  "CMakeFiles/FdF.dir/src/validator.c.o"
   "FdF.pdb"
   "FdF"
 )

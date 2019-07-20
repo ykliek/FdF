@@ -6,7 +6,11 @@
 
 #IncludeRegexTransform: 
 
-../libft/libft.h
+/Users/ykliek/Desktop/fdf_dev/libft/ft_atoi.c
+libft.h
+/Users/ykliek/Desktop/fdf_dev/libft/libft.h
+
+/Users/ykliek/Desktop/fdf_dev/libft/libft.h
 unistd.h
 -
 stdlib.h
@@ -21,22 +25,4 @@ string.h
 -
 stdarg.h
 -
-
-../minilibx_macos/mlx.h
-
-/Users/ykliek/Desktop/fdf_dev/src/draw_figure.c
-fdf.h
-/Users/ykliek/Desktop/fdf_dev/src/fdf.h
-
-/Users/ykliek/Desktop/fdf_dev/src/fdf.h
-mlx.h
-/Users/ykliek/Desktop/fdf_dev/src/mlx.h
-stdlib.h
--
-stdio.h
--
-math.h
--
-libft.h
-/Users/ykliek/Desktop/fdf_dev/src/libft.h
 
