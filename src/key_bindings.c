@@ -12,8 +12,8 @@
 
 #include "fdf.h"
 
-int		color(int	keycode, t_mlx *fdf)
-{	
+int		color(int keycode, t_mlx *fdf)
+{
 	fdf->up = 0;
 	if (keycode >= 83 && keycode <= 92)
 	{
@@ -33,7 +33,8 @@ int		color(int	keycode, t_mlx *fdf)
 	}
 	if (keycode == 15)
 	{
-		
+		set_defaults(fdf);
+		image(fdf);
 	}
 	return (0);
 }

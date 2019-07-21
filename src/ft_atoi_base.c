@@ -30,8 +30,8 @@ int		find_fnum(char	c)
 int		ft_atoi_base(char	*str, int	base)
 {
 	long long int		nbr;
-	int		sign;
-	int		current;
+	int					sign;
+	int					current;
 
 	nbr = 0;
 	while (*str == ' ' || *str == '\n' || *str == '\t')

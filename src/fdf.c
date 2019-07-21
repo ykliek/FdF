@@ -40,7 +40,7 @@ void		put_pixel(t_mlx *fdf, int x, int y, int color)
 
 void		image(t_mlx	*fdf)
 {
-	t_map		*head;
+	t_map	*head;
 
 	mlx_destroy_image(fdf->mlx, fdf->img);
 	growth(fdf);
@@ -49,19 +49,27 @@ void		image(t_mlx	*fdf)
 	fdf->img = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
 	fdf->i_ptr = mlx_get_data_addr(fdf->img, &fdf->bpp, &fdf->sz, &fdf->endian);
 	fdf->bpp /= 8;
+
+
 	clock_t	begin;
 	clock_t	end;
 	clock_t	start;
 	begin = clock();
 	start = clock();
+
+
 	while (fdf->map->next)
 	{
 		draw_y(fdf, head);
 		draw_x(fdf, head);
+
+
 		end = clock();
 		printf("Time: %.2f\t%.2f ms\n", (double)(end - begin) / CLOCKS_PER_SEC * 1000,
 				(double)(end - start) / CLOCKS_PER_SEC * 1000);
 		begin = clock();
+
+
 		fdf->map = fdf->map->next;
 	}
 	fdf->map = head;

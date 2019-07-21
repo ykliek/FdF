@@ -12,11 +12,12 @@
 
 #include "fdf.h"
 
-t_map	*write_map(int fd)
+t_map		*write_map(int fd)
 {
 	int		i;
 	char	*line;
 	t_map	*map;
+	t_map	*tmp;
 
 	i = 0;
 	map = NULL;
@@ -24,13 +25,17 @@ t_map	*write_map(int fd)
 	{
 		if (ft_strlen(ft_strtrim(line)) == 0)
 			return (NULL);
-		lst_add(&map, read_map(line, i));
+		system("leaks fdf");
+		tmp = read_map(line, i);
+		lst_add(&map, tmp);
+		deleteList(tmp);
+		free(line);
 		i++;
 	}
 	return (map);
 }
 
-void	make_scale(t_mlx *fdf)
+void		make_scale(t_mlx *fdf)
 {
 	t_map	*head;
 
@@ -44,11 +49,11 @@ void	make_scale(t_mlx *fdf)
 	fdf->map = head;
 }
 
-int		calc_color(int color1, int color2, double percent)
+int			calc_color(int color1, int color2, double percent)
 {
-	t_color		c;
-	t_color		c2;
-	t_color		c1;
+	t_color	c;
+	t_color	c2;
+	t_color	c1;
 
 	c1 = parse_color(color2);
 	c2 = parse_color(color1);
@@ -59,7 +64,7 @@ int		calc_color(int color1, int color2, double percent)
 	return (c.color);
 }
 
-void	spin_figure(t_mlx *fdf, double *x, double *y, int z, t_params dots)
+void		spin_figure(t_mlx *fdf, double *x, double *y, int z, t_params dots)
 {
 	int		previous_x;
 	int		previous_y;
@@ -70,7 +75,7 @@ void	spin_figure(t_mlx *fdf, double *x, double *y, int z, t_params dots)
 	*y = (previous_y - dots.end_y / 2) * cos(fdf->alfa) + z * sin(fdf->alfa); // поворот по осі X
 }
 
-void	iso(int *x, int *y, int z)
+void		iso(int *x, int *y, int z)
 {
 	int		previous_x;
 	int		previous_y;

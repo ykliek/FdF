@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-int		check_length(t_map *map)
+int			check_length(t_map *map)
 {
 	t_map	*head;
 	int		count;

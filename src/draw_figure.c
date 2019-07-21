@@ -23,7 +23,7 @@ t_draw		get_double(t_map *map, t_value content)
 	return (values);
 }
 
-t_value 		curr_dot(t_map *begin_list, int x, int y)
+t_value		curr_dot(t_map *begin_list, int x, int y)
 {
 	t_value		content;
 
@@ -39,10 +39,10 @@ t_value 		curr_dot(t_map *begin_list, int x, int y)
 
 void		draw_line(t_mlx *fdf, t_params dots)
 {
-	int i;
-	int step;
-	double x;
-	double y;
+	int		i;
+	int		step;
+	double	x;
+	double	y;
 	double	percent;
 	int		color;
 
@@ -62,22 +62,27 @@ void		draw_line(t_mlx *fdf, t_params dots)
 	}
 }
 
+void		define_dots(t_mlx *fdf, t_params *dots)
+{
+		dots->x = fdf->map->content.x;
+		dots->y = fdf->map->content.y;
+		dots->z = fdf->map->content.height;
+		dots->c1 = fdf->map->content.color;
+		dots->new_x = fdf->map->content.x;
+		dots->new_y = fdf->map->next->content.y;
+		dots->new_z = fdf->map->next->content.height;
+		dots->c2 = fdf->map->next->content.color;
+		dots->end_x = fdf->end->content.x;
+		dots->end_y = fdf->end->content.y;
+}
+
 void		draw_y(t_mlx *fdf, t_map *head)
 {
-    t_params dots;
+	t_params dots;
 
-    if (fdf->map->next)
-    {
-        dots.x = fdf->map->content.x;
-        dots.y = fdf->map->content.y;
-        dots.z = fdf->map->content.height;
-        dots.c1 = fdf->map->content.color;
-        dots.new_x = fdf->map->content.x;
-        dots.new_y = fdf->map->next->content.y;
-        dots.new_z = fdf->map->next->content.height;
-        dots.c2 = fdf->map->next->content.color;
-        dots.end_x = fdf->end->content.x;
-        dots.end_y = fdf->end->content.y;
+	if (fdf->map->next)
+	{
+		define_dots(fdf, &dots);
 		if (dots.new_y != 0)
 		{
 			(fdf->izo_mod == 0) ? : iso(&dots.y, &dots.x, 0);
@@ -85,34 +90,28 @@ void		draw_y(t_mlx *fdf, t_map *head)
 			(fdf->izo_mod == 0) ? : iso(&dots.end_y, &dots.end_x, 0);
 			draw_line(fdf, dots);
 		}
-    }
+	}
 }
 
- void		draw_x(t_mlx *fdf, t_map *head)
- {
-        t_params dots;
-        t_map     *next_dots;
+void		draw_x(t_mlx *fdf, t_map *head)
+{
+		t_params	dots;
+		t_map		*next_dots;
 
-        if (fdf->map->next)
-        {
-            dots.x = fdf->map->content.x;
-            dots.y = fdf->map->content.y;
-            dots.z = fdf->map->content.height;
-            dots.c1 = fdf->map->content.color;
-            next_dots = find_under(fdf->map, dots.y);
-            dots.new_x = next_dots->content.x;
-            dots.new_y = fdf->map->content.y;
-            dots.new_z = next_dots->content.height;
-            dots.c2 = next_dots->content.color;
-			dots.end_x = fdf->end->content.x;
-       		dots.end_y = fdf->end->content.y;
-            if (dots.new_x != 0)
-            {
+		if (fdf->map->content.x != fdf->end->content.x)
+		{
+			define_dots(fdf, &dots);
+			next_dots = find_under(fdf->map, dots.y);
+			dots.new_x = next_dots->content.x;
+			dots.new_y = fdf->map->content.y;
+			dots.new_z = next_dots->content.height;
+			dots.c2 = next_dots->content.color;
+			if (dots.new_x != 0)
+			{
 				(fdf->izo_mod == 0) ? : iso(&dots.y, &dots.x, 0);
 				(fdf->izo_mod == 0) ? : iso(&dots.new_y, &dots.new_x, 0);
 				(fdf->izo_mod == 0) ? : iso(&dots.end_y, &dots.end_x, 0);
 				draw_line(fdf, dots);
 			}
-        }
- }
-
+		}
+}

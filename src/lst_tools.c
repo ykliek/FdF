@@ -12,22 +12,21 @@
 
 #include "fdf.h"
 
-void		deleteList(t_map	**head)
+void		deleteList(t_map *head)
 {
-	t_map	*prev;
+	t_map	*tmp;
 
-	while ((*head)->next)
+	while (head != NULL)
 	{
-		prev = (*head);
-		(*head) = (*head)->next;
-		free(prev);
+		tmp = head;
+		head = head->next;
+		free(tmp);
 	}
-	free(*head);
 }
 
-t_map	*getLast(t_map	*head)
+t_map		*getLast(t_map	*head)
 {
-	t_map		*begin;
+	t_map	*begin;
 
 	begin = head;
 	if (begin)
@@ -38,7 +37,7 @@ t_map	*getLast(t_map	*head)
 	return (begin);
 }
 
-void	pushBack(t_map	*head,	t_value	data)
+void		pushBack(t_map	*head,	t_value	data)
 {
 	t_map	*tmp;
 	t_map	*lst;
@@ -50,7 +49,7 @@ void	pushBack(t_map	*head,	t_value	data)
 	lst->next = tmp;
 }
 
-void	lst_add(t_map	**head,	t_map	*add)
+void		lst_add(t_map	**head,	t_map	*add)
 {
 	if (*(head))
 	{	
@@ -72,7 +71,7 @@ void	lst_add(t_map	**head,	t_map	*add)
 	}	
 }
 
-void	push(t_map	**head, t_value	data)
+void		push(t_map	**head, t_value	data)
 {
 	t_map	*tmp;
 

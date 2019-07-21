@@ -14,7 +14,7 @@ NAME = fdf
 
 FLAGS = -Wall -Werror -Wextra
 
-FRAMEWORKS = -framework OpenGL -framework AppKit
+FRAMEWORKS = -framework OpenGL -framework AppKit -O2
 
 LIB = libft/libft.a
 

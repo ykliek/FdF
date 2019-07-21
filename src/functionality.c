@@ -12,7 +12,14 @@
 
 #include "fdf.h"
 
-void	move(t_mlx *fdf, int keycode)
+void		set_defaults(t_mlx *fdf)
+{
+	fdf->scale = define_scale(*fdf);
+	fdf->cam->start_y = 0;
+	fdf->cam->start_x = 0;
+}
+
+void		move(t_mlx *fdf, int keycode)
 {
 	if (keycode == 123)
 		fdf->cam->start_y -= 5;
@@ -24,11 +31,11 @@ void	move(t_mlx *fdf, int keycode)
 		fdf->cam->start_x -= 5;
 }
 
-void	zoom(int keycode, t_mlx *fdf)
+void		zoom(int keycode, t_mlx *fdf)
 {
 	t_map	*head;
-	int 	x;
-	int 	y;
+	int		x;
+	int		y;
 	int		tmp;
 
 	head = fdf->map;
@@ -46,12 +53,12 @@ void	zoom(int keycode, t_mlx *fdf)
 		fdf->scale /= 1.1;
 		fdf->scale = (fdf->scale == 0) ? 1 : fdf->scale;
 	}
-	fdf->map = head; 
+	fdf->map = head;
 }
 
-void	change_color(t_mlx *fdf, int color, int type)
+void		change_color(t_mlx *fdf, int color, int type)
 {
-	t_map *head;
+	t_map	*head;
 
 	head = fdf->map;
 	while (fdf->map != NULL)
@@ -67,7 +74,7 @@ void	change_color(t_mlx *fdf, int color, int type)
 	fdf->map = head;
 }
 
-void change_color_btype(int keycode, t_mlx *fdf)
+void		change_color_btype(int keycode, t_mlx *fdf)
 {
 	if (keycode == 83)
 		change_color(fdf, ft_atoi_base("0x00ffff", 16), fdf->color_t);

@@ -12,10 +12,10 @@
 
 #include "fdf.h"
 
-int 		define_scale(t_mlx		fdf)
+int			define_scale(t_mlx fdf)
 {
-	int 		scale;
-	t_map		*end;
+	int		scale;
+	t_map	*end;
 
 
 	end = fdf.end;
@@ -25,14 +25,14 @@ int 		define_scale(t_mlx		fdf)
 	return (scale);
 }
 
-int		close_wnd(void	*param)
+int			close_wnd(void	*param)
 {
 	(void)param;
 	exit(0);
 	return (0);
 }
 
-int 		initializtion(t_mlx *fdf, int fd)
+int			initializtion(t_mlx *fdf, int fd)
 {
 	fdf->bpp /= 8;
 	fdf->cam = (t_cam *)malloc(sizeof(t_cam));
@@ -54,7 +54,7 @@ int 		initializtion(t_mlx *fdf, int fd)
 	return (1);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	int		fd;
 	t_mlx	fdf;

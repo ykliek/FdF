@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-t_map	*read_map(char *line, int j)
+t_map		*read_map(char *line, int j)
 {
 	t_map	*map;
 	t_value	data;
@@ -43,7 +43,7 @@ t_map	*read_map(char *line, int j)
 
 t_color		parse_color(int color)
 {
-	t_color c;
+	t_color	c;
 
 	c.r = color >> 16;
 	color -= c.r << 16;
@@ -56,19 +56,23 @@ t_color		parse_color(int color)
 t_map		*find_under(t_map *map, int y)
 {
 	t_map	*tmp;
+	int		x;
 
+	x = 0;
 	tmp = map;
 	tmp = tmp->next;
 	while (tmp != NULL)
 	{
 		if (y == tmp->content.y)
-			return (tmp);
+		{
+			return(tmp);
+		}
 		tmp = tmp->next;
 	}
-	return (tmp);	
+	return (NULL);
 }
 
-void	ret_scale(t_mlx *fdf)
+void		ret_scale(t_mlx *fdf)
 {
 	t_map	*head;
 
